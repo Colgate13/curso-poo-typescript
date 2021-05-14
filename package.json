@@ -1,0 +1,15 @@
+{
+  "name": "poo-typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/caarlos1/poo-typescript.git",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/prompt-sync": "^4.1.0",
+    "prettier": "2.3.0",
+    "ts-node-dev": "^1.1.6"
+  },
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
