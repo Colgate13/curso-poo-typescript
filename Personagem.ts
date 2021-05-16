@@ -1,6 +1,4 @@
-import prompt from 'prompt-sync'
-
-class Personagem {
+export default class Personagem {
   constructor(
     public nome: string,
     public vida: number,
@@ -8,39 +6,54 @@ class Personagem {
     public ataque: number,
     public defesa: number
   ) {}
-}
 
-let teclado = prompt()
-let option: number = 0
+  // Toda vez que pensar em ler dados na classe, use os parâmetros
+  // Toda vez que pensar em imprimir algo, use retorno.
 
-let sansa: Personagem = new Personagem('Sansa Stark', 100, 50, 10, 20)
+  public mostrarAtributos(): string {
+    return `\n+=[ Atributos do Guerreiro: \n|   Nome: ${
+      this.nome
+    } \n|   Vida: ${this.vida.toFixed(1)} \n|   Energia: ${this.energia.toFixed(
+      1
+    )} \n|   Ataque: ${this.ataque.toFixed(
+      1
+    )} \n|   Defesa: ${this.defesa.toFixed(1)} \n`
+  }
 
-while (option != 9) {
-  console.log('+========= Personsagem =========+')
-  console.log('| 1. Treinar Ataque             |')
-  console.log('| 2. Treinar Defesa             |')
-  console.log('| 3. Imprimir Atributos         |')
-  console.log('| 9. Sair do Treinamento        |')
-  console.log('+===============================+')
+  public treinarAtaque(): void {
+    if (this.estaVivo()) {
+      this.ataque += Math.random() * 7
+      this.energia -= Math.random() * 10
+    }
+  }
 
-  option = +teclado('Escolha uma Ação: ')
+  public treinarDefesa(): void {
+    if (this.estaVivo()) {
+      this.defesa += Math.random() * 5
+      this.energia -= Math.random() * 10
 
-  switch (option) {
-    case 1:
-      sansa.ataque += 2
-      sansa.energia -= 8
+      if (this.defesa >= 100) {
+        console.log('Sua defesa está no máximo')
+        this.defesa = 100
+      }
+    }
+  }
 
-      console.log('')
-      console.log('+===============================+')
-      console.log(`| Novo ataque: ${sansa.ataque}`)
-      console.log(`| Energia: ${sansa.energia}`)
-      console.log('+===============================+')
-      console.log('')
+  public descansar(horas: number): void {
+    if (this.estaVivo()) {
+      this.energia += horas * (Math.random() * 10)
+    }
+  }
 
-      break
-    case 2:
-      break
-    case 9:
-      break
+  public batalhar(): number {
+    let danoSofrido: number = Math.random() * 100
+    if (this.estaVivo()) {
+      this.energia -= danoSofrido
+      return danoSofrido
+    } else return 0
+  }
+
+  public estaVivo(): boolean {
+    return this.energia > 0
   }
 }
