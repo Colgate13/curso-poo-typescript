@@ -1,59 +1,73 @@
 export default class Personagem {
   constructor(
-    public nome: string,
-    public vida: number,
-    public energia: number,
-    public ataque: number,
-    public defesa: number
+    private _nome: string,
+    private _vida: number,
+    private _energia: number,
+    private _ataque: number,
+    private _defesa: number
   ) {}
 
   // Toda vez que pensar em ler dados na classe, use os parâmetros
   // Toda vez que pensar em imprimir algo, use retorno.
 
+  public get nome(): string {
+    return this._nome
+  }
+
+  public set nome(nome: string) {
+    this._nome = nome
+  }
+
   public mostrarAtributos(): string {
-    return `\n+=[ Atributos do Guerreiro: \n|   Nome: ${
+    return `\n+=[ Atributos: \n|   Nome: ${
       this.nome
-    } \n|   Vida: ${this.vida.toFixed(1)} \n|   Energia: ${this.energia.toFixed(
+    } \n|   Vida: ${this._vida.toFixed(
       1
-    )} \n|   Ataque: ${this.ataque.toFixed(
+    )} \n|   Energia: ${this._energia.toFixed(
       1
-    )} \n|   Defesa: ${this.defesa.toFixed(1)} \n`
+    )} \n|   Ataque: ${this._ataque.toFixed(
+      1
+    )} \n|   Defesa: ${this._defesa.toFixed(1)} \n`
   }
 
   public treinarAtaque(): void {
     if (this.estaVivo()) {
-      this.ataque += Math.random() * 7
-      this.energia -= Math.random() * 10
+      this._ataque += this.randomizar(7)
+      this._energia -= this.randomizar(10)
     }
   }
 
   public treinarDefesa(): void {
     if (this.estaVivo()) {
-      this.defesa += Math.random() * 5
-      this.energia -= Math.random() * 10
+      this._defesa += this.randomizar(5)
+      this._energia -= this.randomizar(10)
 
-      if (this.defesa >= 100) {
+      if (this._defesa >= 100) {
         console.log('Sua defesa está no máximo')
-        this.defesa = 100
+        this._defesa = 100
       }
     }
   }
 
   public descansar(horas: number): void {
     if (this.estaVivo()) {
-      this.energia += horas * (Math.random() * 10)
+      this._energia += horas * this.randomizar(10)
     }
   }
 
   public batalhar(): number {
-    let danoSofrido: number = Math.random() * 100
+    let danoSofrido: number = this.randomizar(100)
     if (this.estaVivo()) {
-      this.energia -= danoSofrido
+      this._energia -= danoSofrido
       return danoSofrido
     } else return 0
   }
 
   public estaVivo(): boolean {
-    return this.energia > 0
+    return this._energia > 0
+  }
+
+  private randomizar(fator: number): number {
+    return Math.random() * fator
   }
 }

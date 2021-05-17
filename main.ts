@@ -7,7 +7,8 @@ let option: number = 0
 let personagem: Personagem = new Personagem('Sansa Stark', 100, 50, 10, 20)
 
 while (option != 9 && personagem.estaVivo()) {
-  console.log('+==[ Personsagem ]==============+')
+  console.log(`Guerreiro: ${personagem.nome}`);
+  console.log('+==[ Ações ]====================+')
   console.log('| 1. Treinar Ataque             |')
   console.log('| 2. Treinar Defesa             |')
   console.log('| 3. Descançar                  |')
