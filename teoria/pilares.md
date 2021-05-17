@@ -15,3 +15,5 @@ Tem o objetivo de isolar nossas classes.
 A herança proporciona criar super classes que terão todos os metodos comuns entre as subclasses, essas que heradarão das primeiras.
 
 ## Polimorfismo
+
+Polimorfismo significa muitas formas. A ideia é que uma mesma chamada possa ter comportamentos diferentes.

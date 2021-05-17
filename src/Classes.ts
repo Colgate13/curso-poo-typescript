@@ -1,4 +1,4 @@
-import Personagem from './Personagem'
+import { Personagem } from './Personagem'
 import { Util } from './Util'
 
 export class Warrior extends Personagem {
@@ -12,6 +12,10 @@ export class Warrior extends Personagem {
     this._vidaAtual = Util.randomizar(20, this._vidaMaxima)
     this._forca = Util.randomizar(100, 1_000)
     this._agilidade = Util.randomizar(100, 1_000)
+  }
+
+  public atacar(): string {
+    return 'Ataque: Golpe de machado.'
   }
 }
 
@@ -27,6 +31,10 @@ export class Priest extends Personagem {
     this._espirito = Util.randomizar(100, 1_000)
     this._versatilidade = Util.randomizar(100, 1_000)
   }
+
+  public atacar(): string {
+    return 'Ataque: Chuva de benção.'
+  }
 }
 
 export class Mage extends Personagem {
@@ -41,5 +49,9 @@ export class Mage extends Personagem {
 
     this._intelecto = Util.randomizar(100, 1_000)
     this._velocidade = Util.randomizar(100, 2_000)
+  }
+
+  public atacar(): string {
+    return 'Ataque: Bola de Fogo.'
   }
 }
