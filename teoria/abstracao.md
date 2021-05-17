@@ -1,4 +1,4 @@
-# Estrutura
+# Abstração
 
 ## Classe
 
@@ -6,9 +6,9 @@ Abstração do que há em comum (em termos de características em comportamentos
 
 #### Divisão:
 
-- Nome
-- Atributos (Características)
-- Métodos (Ações)
+- Identidade (nome)
+- Atributos (características)
+- Métodos (ações)
 
 Exemplo 1:
 
