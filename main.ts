@@ -1,5 +1,5 @@
-import { Mage, Priest, Warrior } from './Classes'
-import Personagem from './Personagem'
+import Personagem from './src/Personagem'
+import { Mage, Priest, Warrior } from './src/Classes'
 
 let mage: Personagem = new Mage('Alakazan')
 let warrior: Personagem = new Warrior('Fuzarnin')
